@@ -1076,10 +1076,10 @@ function Map:drawImageLayer(layer)
 		local imagewidth, imageheight = layer.image:getDimensions()
 		-- if we're repeating on the Y axis...
 		if layer.repeaty then
-			local x = imagewidth
-			local y = imageheight
+			local x = layer.x
+			local y = layer.y
 			while y < self.height * self.tileheight do 
-				lg.draw(layer.image, x, y)
+				
 				-- if we are *also* repeating on X
 				if layer.repeatx then 
 					x = x + imagewidth
@@ -1089,6 +1089,9 @@ function Map:drawImageLayer(layer)
 					end
 				end
 				y = y + imageheight
+				x = layer.x
+				lg.draw(layer.image, x, y)
+
 			end
 		-- if we're repeating on X alone...
 		elseif layer.repeatx then
