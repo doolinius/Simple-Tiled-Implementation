@@ -91,21 +91,22 @@ return {
 										table.insert(collidables, t)
 									end
 								end
+							else
+
+
+							   local t = {
+							      x          = (x-1) * map.tilewidth  + tile.offset.x + map.offsetx,
+							      y          = (y-1) * map.tileheight + tile.offset.y + map.offsety,
+							      width      = tile.width,
+							      height     = tile.height,
+							      layer      = layer,
+							      type       = tile.type,
+							      properties = tile.properties
+							   }
+
+							   world:add(t, t.x, t.y, t.width, t.height)
+							   table.insert(collidables, t)
 							end
-
-
-							local t = {
-								x          = (x-1) * map.tilewidth  + tile.offset.x + map.offsetx,
-								y          = (y-1) * map.tileheight + tile.offset.y + map.offsety,
-								width      = tile.width,
-								height     = tile.height,
-								layer      = layer,
-								type       = tile.type,
-								properties = tile.properties
-							}
-
-							world:add(t, t.x, t.y, t.width, t.height)
-							table.insert(collidables, t)
 						end
 					end
 				elseif layer.type == "imagelayer" then
